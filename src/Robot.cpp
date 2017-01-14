@@ -54,24 +54,15 @@ void Robot::DisabledPeriodic() {
 void Robot::AutonomousInit() {
 	if (autonomousCommand.get() != nullptr)
 		autonomousCommand->Start();
-
+	startangle = round(g->GetAngle());
 }
 
 void Robot::AutonomousPeriodic() {
 	Scheduler::GetInstance()->Run();
-	int startangle = round(g->GetAngle());
 	double speed = 0.5;
-	if(g->GetAngle()>startangle){
-		RobotMap::driveLeftMotor->Set(speed-0.1);
-		RobotMap::driveRightMotor->Set(speed +0.1);
-	}else if(g->GetAngle()>startangle){
-		RobotMap::driveLeftMotor->Set(speed +0.1);
-		RobotMap::driveRightMotor->Set(speed-0.1);
-	}else{
-		RobotMap::driveLeftMotor->Set(speed);
-		RobotMap::driveRightMotor->Set(speed);
-	}
-
+	double difference = startangle-(g->GetAngle());
+	RobotMap::driveLeftMotor->Set(speed-(difference*0.1));
+	RobotMap::driveRightMotor->Set(speed+(difference*0.1));
 }
 
 void Robot::TeleopInit() {

@@ -46,6 +46,6 @@ public:
 	Gyro *g;
 	BuiltInAccelerometer *acc;
 private:
-
+	double startangle;
 };
 #endif
