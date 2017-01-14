@@ -61,8 +61,8 @@ void Robot::AutonomousPeriodic() {
 	Scheduler::GetInstance()->Run();
 	double speed = 0.5;
 	double difference = startangle-(g->GetAngle());
-	RobotMap::driveLeftMotor->Set(speed-(difference*0.1));
-	RobotMap::driveRightMotor->Set(speed+(difference*0.1));
+	RobotMap::driveLeftMotor->Set(speed-(difference*0.05));
+	RobotMap::driveRightMotor->Set(speed+(difference*0.05));
 }
 
 void Robot::TeleopInit() {
