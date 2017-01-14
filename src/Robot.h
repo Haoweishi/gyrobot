@@ -44,8 +44,7 @@ public:
 	virtual void TeleopPeriodic();
 	virtual void TestPeriodic();
 	Gyro *g;
-	BuiltInAccelerometer *acc;
+	//BuiltInAccelerometer *acc;
 private:
-	double startangle;
 };
 #endif
